@@ -55,3 +55,29 @@ Advanced C++ features: templates, default template arguments, operator overloadi
 
 Thanks to:
 rgarcia
+
+
+
+-------------
+Python wrapper:
+
+bshanks is trying to make a Python wrapper. Currently it doesn't compile:
+
+$ python setup.py build_ext --inplace
+running build_ext
+cythoning PyKf.pyx to PyKf.cpp
+building 'PyKf' extension
+gcc -pthread -fno-strict-aliasing -DNDEBUG -g -fwrapv -O2 -Wall -Wstrict-prototypes -fPIC -I/usr/include/python2.7 -c PyKf.cpp -o build/temp.linux-x86_64-2.7/PyKf.o
+cc1plus: warning: command line option ‘-Wstrict-prototypes’ is valid for Ada/C/ObjC but not for C++ [enabled by default]
+PyKf.cpp:318:12: error: type/value mismatch at argument 1 in template parameter list for ‘template<long unsigned int p> class KF’
+PyKf.cpp:318:12: error:   expected a constant of type ‘long unsigned int’, got ‘size_t {aka long unsigned int}’
+PyKf.cpp: In function ‘int __pyx_pf_4PyKf_4PyKf___cinit__(PyObject*, PyObject*, PyObject*)’:
+PyKf.cpp:621:66: error: type/value mismatch at argument 1 in template parameter list for ‘template<long unsigned int p> class KF’
+PyKf.cpp:621:66: error:   expected a constant of type ‘long unsigned int’, got ‘size_t {aka long unsigned int}’
+PyKf.cpp:621:69: error: expected primary-expression before ‘)’ token
+PyKf.cpp:621:70: error: expected ‘)’ before ‘new’
+PyKf.cpp: In function ‘PyObject* __pyx_pf_4PyKf_4PyKf_2__call__(PyObject*, PyObject*, PyObject*)’:
+PyKf.cpp:670:11: error: ‘__pyx_v_yVar’ declared as reference but not initialized
+PyKf.cpp:752:85: error: request for member ‘call’ in ‘*((__pyx_obj_4PyKf_PyKf*)__pyx_v_self)->__pyx_obj_4PyKf_PyKf::kf’, which is of non-class type ‘int’
+error: command 'gcc' failed with exit status 1
+
